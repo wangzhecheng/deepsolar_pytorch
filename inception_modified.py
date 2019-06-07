@@ -68,7 +68,7 @@ class InceptionSegmentation(nn.Module):
                 CAM = self.linear2.weight.data[1, :] * feature_map.permute(0, 2, 3, 1)
                 CAM = CAM.sum(dim=3)
         if testing:
-            return y, CAM
+            return y, logits, CAM
         else:
             return y
 

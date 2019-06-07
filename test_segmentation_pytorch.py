@@ -59,7 +59,7 @@ def test_model(model, dataloader, metrics, threshold):
         inputs = inputs.to(device)
         labels = labels.to(device)
         with torch.set_grad_enabled(False):
-            outputs, CAM = model(inputs, testing=True)   # CAM is a 1 x 35 x 35 activation map
+            _, outputs, CAM = model(inputs, testing=True)   # CAM is a 1 x 35 x 35 activation map
             prob = F.softmax(outputs, dim=1)
             preds = prob[:, 1] >= threshold
 
